@@ -7,6 +7,7 @@ const StrangerThingsRepository = require('./data/repository/StrangerThings');
 const StrangerThingsService = require('./services/StrangerThings');
 
 const app = express();
+const upsideDownMode = process.env.UPSIDEDOWN_MODE || true;
 
 const strangerThingsRepository = new StrangerThingsRepository(
   strangerThingsDataset,
@@ -18,7 +19,7 @@ const strangerThingsService = new StrangerThingsService(
 app.use(cors());
 
 let hereIsTheUpsideDown = true;
-if (process.env.UPSIDEDOWN_MODE === 'false') {
+if (upsideDownMode === 'false') {
   hereIsTheUpsideDown = false;
 }
 
